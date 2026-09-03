@@ -7,7 +7,15 @@ import {
   spaceVariantCaptions,
 } from "@/components/kweza/status-space";
 import { Announcements, announcementCaptions } from "@/components/kweza/announcements";
-import { Puzzles, puzzleCaptions } from "@/components/kweza/puzzles";
+import {
+  GamesHome,
+  GamesAllOverlay,
+  AllExpanded,
+  homeCaptions,
+  homeLabels,
+  allCaptions,
+  allLabels,
+} from "@/components/kweza/games";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -149,7 +157,10 @@ function Index() {
   const [statusOpt, setStatusOpt] = useState(4);
   const [spaceVariant, setSpaceVariant] = useState(0);
   const [annOpt, setAnnOpt] = useState(0);
-  const [puzOpt, setPuzOpt] = useState(0);
+  const [homeOpt, setHomeOpt] = useState(0);
+  const [allOpt, setAllOpt] = useState(0);
+  const [featured, setFeatured] = useState(4);
+  const [allOpen, setAllOpen] = useState(false);
   const [state, setState] = useState<PlayerState>("ranked_paying");
   const [blitz, setBlitz] = useState(true);
   const countdown = useCountdown();
@@ -177,10 +188,23 @@ function Index() {
       <Caption>{announcementCaptions[annOpt]!}</Caption>
     </div>
   );
+  const free = state === "free_player";
+  const inlineExpanded = allOpen && allOpt === 2;
   const puz = (
     <div>
-      <Puzzles option={puzOpt} state={state} />
-      <Caption>{puzzleCaptions[puzOpt]!}</Caption>
+      {inlineExpanded ? (
+        <AllExpanded free={free} onClose={() => setAllOpen(false)} />
+      ) : (
+        <GamesHome
+          option={homeOpt}
+          count={featured}
+          free={free}
+          onOpen={() => setAllOpen(true)}
+        />
+      )}
+      <Caption>
+        {inlineExpanded ? allCaptions[allOpt]! : homeCaptions[homeOpt]!}
+      </Caption>
     </div>
   );
   const blitzEl = blitz ? <Blitz /> : null;
@@ -229,10 +253,25 @@ function Index() {
             onChange={setAnnOpt}
           />
           <Segmented
-            label="Puzzles"
-            options={["1", "2", "3"]}
-            value={puzOpt}
-            onChange={setPuzOpt}
+            label="Home games section"
+            options={homeLabels}
+            value={homeOpt}
+            onChange={setHomeOpt}
+          />
+          <Segmented
+            label="All games experience"
+            options={allLabels}
+            value={allOpt}
+            onChange={(i) => {
+              setAllOpt(i);
+              setAllOpen(false);
+            }}
+          />
+          <Segmented
+            label="Featured games on home"
+            options={["2", "4", "6"]}
+            value={[2, 4, 6].indexOf(featured)}
+            onChange={(i) => setFeatured([2, 4, 6][i]!)}
           />
           <div className="sm:col-span-2">
             <Segmented
@@ -268,6 +307,13 @@ function Index() {
               {order.map((node, i) => (node ? <div key={i}>{node}</div> : null))}
             </div>
           </div>
+          {allOpen && allOpt !== 2 && (
+            <GamesAllOverlay
+              option={allOpt}
+              free={free}
+              onClose={() => setAllOpen(false)}
+            />
+          )}
           <TabBar />
         </div>
       </div>
