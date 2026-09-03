@@ -59,10 +59,32 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-deep: var(--brand-deep);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-edge: var(--edge);
+  --color-edge-strong: var(--edge-strong);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-deep: var(--success-deep);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-blitz: var(--blitz);
+  --color-blitz-accent: var(--blitz-accent);
+  --color-blitz-ink: var(--blitz-ink);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Gabarito", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.625rem;
+  --brand: oklch(0.62 0.19 148);
+  --brand-foreground: oklch(0.99 0 0);
+  --brand-soft: oklch(0.95 0.05 148);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -140,5 +162,53 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
 }
+
+/* Kweza tokens */
+.kweza {
+  --page: #fff7ee;
+  --surface: #ffffff;
+  --edge: #f0dfc8;
+  --edge-strong: #a3855f;
+  --ink: #2b1a0e;
+  --ink-muted: #8a6a4c;
+  --brand: #e8590c;
+  --brand-soft: #fdebd9;
+  --brand-deep: #9a3e08;
+  --success: #0b7350;
+  --success-soft: #e2f3e9;
+  --success-deep: #0b6b4a;
+  --danger: #b3261e;
+  --danger-soft: #fde7e5;
+  --blitz: #3b2cb3;
+  --blitz-accent: #c7ff4a;
+  --blitz-ink: #1a1440;
+  --border: var(--edge);
+  color: var(--ink);
+  background-color: var(--page);
+  font-family: var(--font-sans);
+}
+
+.kweza.kweza-dark {
+  --page: #12131a;
+  --surface: #1b1d28;
+  --edge: #262838;
+  --edge-strong: #666b85;
+  --ink: #f2f1fa;
+  --ink-muted: #8b8fa3;
+  --brand: #ff7a2e;
+  --brand-soft: #2a1c10;
+  --brand-deep: #ffb182;
+  --success: #3ecf8e;
+  --success-soft: #12291f;
+  --success-deep: #7ee5b6;
+  --danger: #ff6b6b;
+  --danger-soft: #2e1414;
+  --blitz: #6b57ff;
+}
+
+.font-display { font-family: var(--font-display); }
+.bg-page { background-color: var(--page); }
