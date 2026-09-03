@@ -363,10 +363,13 @@ export function StatusSpace({
 
   if (variant === 7) {
     return (
-      <div className="mt-5 rounded-2xl bg-muted p-4">
-        <p className="text-[11px] font-medium tracking-wide text-brand">{l.over}</p>
-        <p className="mt-1 text-[16px] font-bold leading-snug">{l.lead}</p>
-        <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{l.sub}</p>
+      <div className="relative mt-5 overflow-hidden rounded-xl border border-border bg-muted p-4">
+        <div className="absolute left-0 top-3 bottom-3 w-1 rounded-r-full bg-brand" />
+        <div className="pl-3">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-brand">{l.over}</p>
+          <p className="mt-1 text-[15px] font-bold leading-snug">{l.lead}</p>
+          <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{l.sub}</p>
+        </div>
       </div>
     );
   }
