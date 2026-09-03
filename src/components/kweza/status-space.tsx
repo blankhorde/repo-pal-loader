@@ -16,7 +16,7 @@ export const spaceVariantCaptions: Record<number, string> = {
   4: "Hairline label-and-value rows read like a quiet fact sheet, no container around them.",
   5: "A single accent rule on the left holds a short promise line and its Sunday condition.",
   6: "A small overline names the step, a short headline states it, and the condition trails behind.",
-  7: "Same next-step content as 5g, gathered into one soft, filled container so it reads as a single object.",
+  7: "Same next-step content as 5g, gathered into one soft, filled container with a subtle border and a left brand accent so it reads as a single object.",
   8: "Same next-step content as 5g, gathered into one hairline-outlined container to compare against the fill.",
 };
 
@@ -363,10 +363,13 @@ export function StatusSpace({
 
   if (variant === 7) {
     return (
-      <div className="mt-5 rounded-2xl bg-muted p-4">
-        <p className="text-[11px] font-medium tracking-wide text-brand">{l.over}</p>
-        <p className="mt-1 text-[16px] font-bold leading-snug">{l.lead}</p>
-        <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{l.sub}</p>
+      <div className="relative mt-5 overflow-hidden rounded-xl border border-border bg-muted p-4">
+        <div className="absolute left-0 top-3 bottom-3 w-1 rounded-r-full bg-brand" />
+        <div className="pl-3">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-brand">{l.over}</p>
+          <p className="mt-1 text-[15px] font-bold leading-snug">{l.lead}</p>
+          <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{l.sub}</p>
+        </div>
       </div>
     );
   }
