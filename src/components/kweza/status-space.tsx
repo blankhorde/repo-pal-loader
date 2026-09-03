@@ -16,7 +16,7 @@ export const spaceVariantCaptions: Record<number, string> = {
   4: "Hairline label-and-value rows read like a quiet fact sheet, no container around them.",
   5: "A single accent rule on the left holds a short promise line and its Sunday condition.",
   6: "A small overline names the step, a short headline states it, and the condition trails behind.",
-  7: "Same next-step content as 5g, gathered into one soft, filled container so it reads as a single object.",
+  7: "Same next-step content as 5g, gathered into one soft, filled container with a subtle border and a left brand accent so it reads as a single object.",
   8: "Same next-step content as 5g, gathered into one hairline-outlined container to compare against the fill.",
 };
 
